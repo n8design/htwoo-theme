@@ -1,0 +1,14 @@
+{{ if .BlockTitle }}
+<h3>{{ .BlockTitle }}</h3>
+{{ end }}
+<menu class="menu {{ .Styles }}">
+    {{/*  {{ $currentPage := . */}}
+    {{ range .Menu }}
+    <li class="menu-item">
+        <a class="menu-link" href="{{.URL }}" {{ if eq .Params.blank true }} target="_blank" rel="noopener"{{ end}}>{{.Name }}</a>
+    </li>
+    {{/*  <li class="f-menu-item{{ if .IsMenuCurrent " main" .}}" aria-current="page{{ end}}">
+        <a class="menu-link" href="{{ .URL }}" {{ if eq .Params.blank true }} target="_blank" rel="noopener"{{ end}}>{{ .name }}</a>
+    </li>  */}}
+    {{ end }}
+</menu>

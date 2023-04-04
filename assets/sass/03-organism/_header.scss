@@ -1,0 +1,28 @@
+@use "00-base/design-token.vars" as dt;
+
+.header-main{
+	position: sticky;
+	top: 0;
+	right: 0;
+	left: 0;
+
+	display: grid;
+	// background-color: rgba(#fff, 0);
+	box-sizing: border-box;
+	padding: clamp(1.5vw, 2rem, 1.5vh);
+	padding-bottom: 0;
+
+    background-color: rgba(#fff, 0.5);
+	backdrop-filter: blur(10px);
+    z-index: 10;
+	grid-column: 1 / span 8;
+}
+.header-title{
+	white-space: nowrap;
+
+	grid-column: 1 / span 5;
+	background-color: transparent;
+	@media screen and (max-width: 640px) {
+		grid-column: 1 / span 8;
+	}
+}

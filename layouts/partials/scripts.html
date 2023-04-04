@@ -1,0 +1,7 @@
+{{ $options := (dict
+"format" "esm"
+"targetPath" "js/main.js"
+) }}
+{{ $mainJs := resources.Get "js/main.ts" | js.Build $options }}
+<script src="{{ $mainJs.RelPermalink }}" module="true"></script>
+{{ partial "ga.html" }}

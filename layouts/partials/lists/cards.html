@@ -1,0 +1,24 @@
+{{ $context := .context }}
+{{ $index := add .index 1 }}
+<a href="{{ $context.Params.Link }}" class="introcard-link">
+    <article class="introcard">
+        <div class="introcard-grid">
+            <header class="introcard-header">
+                <div class="introcard-no">
+                    {{ if lt $index 10 }}0{{- $index -}} {{ else }} {{- $index -}} {{ end }}
+                </div>
+                <h1 class="introcard-title">{{ $context.Title }}</h1>
+            </header>
+            <div class="introcard-logo">{{- $currentLogo := (path.Join $context.File.Dir $context.Params.Logo) -}}
+                {{- readFile $currentLogo | safeHTML -}}
+                {{ if $context.Params.Logo2 }}
+                    {{- $currentLogo := (path.Join $context.File.Dir $context.Params.Logo2) -}}
+                    {{- readFile $currentLogo | safeHTML -}}
+                {{ end}}
+            </div>
+            <div class="introcard-desc">
+                {{- $context.Content -}}
+            </div>
+        </div>
+    </article>
+</a>

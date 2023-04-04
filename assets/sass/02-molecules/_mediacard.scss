@@ -1,0 +1,21 @@
+.mediacard{
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+
+	grid-column: auto / span 3;
+}
+.mediacard-media{
+	margin: 0;
+}
+.mediacard-desc{
+	display: flex;
+	flex-direction: column;
+
+	min-height: 6rem;
+
+	align-items: stretch;
+	p{
+		margin-block: 1em;
+	}
+}

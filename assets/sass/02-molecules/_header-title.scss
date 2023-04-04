@@ -1,0 +1,30 @@
+.header-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: inherit;
+    .site-logo{
+        height: 4rem;
+    }
+}
+.home-link{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    &:visited{
+        color: inherit;
+    }
+}
+.site-title{
+    display: inline-block;
+    font-size: 2.75rem;
+    line-height: 2rem;
+    font-weight: 900;
+    margin-left: 1rem;
+    @media screen and (max-width: 640px){
+        font-size: 2rem;
+        line-height: 2.75rem;
+        margin-top: -2em;
+    }
+};

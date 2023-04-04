@@ -1,0 +1,13 @@
+{{- partial "head.html" . -}}
+<body>
+    {{- partial "header.html" . -}}
+
+    {{- block "main" . }}
+    {{- end }}
+    <main class="main-content">
+        Hello world
+    </main>
+    {{- partial "footer.html" . -}}
+</body>
+{{- partial "scripts.html" . -}}
+</html>

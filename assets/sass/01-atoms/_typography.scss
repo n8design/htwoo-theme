@@ -1,0 +1,38 @@
+$h1: clamp(32px, 4.676056338px + 4vw, 100px);
+$h2: clamp(24px, 14.8450704225px + 1.8309859155vw, 40px);
+$p: clamp(16px, 13.1830985915px + .5633802817vw, 20px);
+
+
+.highlight{
+    font-size: clamp(0.8rem, 13.1830985915px + .5633802817vw, 1rem);
+    width: auto;
+    margin: auto;
+    pre{
+        box-sizing: border-box;
+        padding: 1rem 1.5rem;
+        padding-right: 3rem;
+        border-radius: 1rem;
+        overflow: auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 8px;
+    }
+}
+
+p>code{
+    position: relative;
+    border-radius: 0.5em;
+    display: inline;
+    font-size: 1em;
+    line-height: 1.5em;
+    background-color: #272822;
+    color: #f8f8f8;
+    &::before{
+        display: inline-block;
+        width: 0.5em;
+        content: " ";
+    }
+    &::after{
+        display: inline-block;
+        width: 0.5em;
+        content: " ";
+    }
+}

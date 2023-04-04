@@ -1,0 +1,11 @@
+@use 'welcome';
+@use 'projects';
+
+.wrapper{
+    display: grid;
+    grid-template-columns: max(250px, 15vh) repeat(7, 1fr);
+    gap: max(2rem, 3vw)
+}
+.main-content{
+    grid-column: 3 / span 5;
+}

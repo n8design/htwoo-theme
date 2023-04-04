@@ -1,0 +1,9 @@
+@use "typography";
+
+
+.sect-header{
+	font-size: clamp(4rem, 5vw, 5vh);
+	font-weight: 900;
+
+	margin-top: 0;
+}

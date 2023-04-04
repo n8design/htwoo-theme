@@ -1,0 +1,31 @@
+{{ $pages := .Site.Pages}}
+{{ $current := .}}
+<button class="menu-toggle" id="ham-menu" aria-expanded="false" aria-haspopup="true" aria-controls="ham">
+    <svg id="i5" class="icon" viewBox="0 0 100 100" style="display: none;">
+        <path id="top-line-5" d="M50,40 L70,60" style="opacity: 1;"></path>
+        <path id="middle-line-5" d="M129.99999999999997,50 L169.99999999999997,50 Z" style="opacity: -0.176471;"></path>
+        <path id="bottom-line-5" d="M30,60 L50,40" style="opacity: 1;"></path>
+    </svg>
+    <span>&#10507; Menu &#10507;</span></button>
+<menu class="menu-main" id="ham">
+    {{ range .Site.Menus.main}}
+    <li class="menu-item{{ if $.IsMenuCurrent " main" .}}" aria-current="page{{ end}}">
+        <a class="menu-link" href="{{ .URL }}" {{ if eq .Params.blank true }} target="_blank" rel="noopener" {{ end}}>{{
+            .Name }}</a>
+        {{ if eq .Params.dynamic true }}
+            {{ $filter := lower .URL }}
+            {{ $filter := replace $filter "/" "" }}
+            {{ range where $pages "Section" $filter }}
+            <menu class="menu-sub">
+                {{ range .Pages }}
+                {{ $activePage := eq $current.Permalink .Permalink }}
+                <li class="menu-item{{ if $activePage }} active" aria-current="page{{ end}}">
+                    <a href="{{ .Permalink }}" class="menu-link">{{ .Title }}</a>
+                </li>
+                {{ end }}
+            </menu class="menu-sub">
+            {{ end }}
+        {{ end }}
+    </li>
+    {{ end }}
+</menu>

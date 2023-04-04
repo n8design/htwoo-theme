@@ -1,0 +1,17 @@
+{{ range .AlternativeOutputFormats -}}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | absURL }}">
+{{ end -}}
+{{- if and .IsNode (not .IsHome) -}}
+<link rel="canonical" href="{{ .Paginator.URL | absURL }}">
+
+{{- if .Paginator.HasNext -}}
+    <link rel="next" href="{{ .Paginator.Next.URL | absURL }}">
+{{- end -}}
+
+{{- if .Paginator.HasPrev -}}
+    <link rel="prev" href="{{ .Paginator.Prev.URL | absURL }}">
+{{- end -}}
+
+{{- else -}}
+<link rel="canonical" href="{{ .Permalink | absURL }}">
+{{- end -}}

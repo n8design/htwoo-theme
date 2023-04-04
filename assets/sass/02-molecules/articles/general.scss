@@ -1,0 +1,47 @@
+@use '../../01-atoms/typography' as typo;
+@use '../../00-base/design-token.vars' as dt;
+
+.t-general {
+	font-size: typo.$p;
+	// font-size: clamp(1, 2vw, 3vw);
+
+	padding: clamp(32px, 2vw, 48px);
+	padding-top: 0;
+	
+	margin-block: 3vw;
+	margin-top: 0;
+	margin-inline: auto;
+	max-width: 100ch;
+	line-height: 1.618;
+
+	h1 {
+		font-size: typo.$h1;
+		line-height: .9;
+		font-weight: 900;
+		text-transform: uppercase;
+		margin-inline: auto;
+		margin-top: 0;
+		background: linear-gradient(0% base.$c-p1-10, 100% base.$c-p2-50);
+	}
+
+	h2 {
+		font-size: typo.$h2;
+		line-height: 1;
+		font-weight: 900;
+		text-transform: uppercase;
+		margin-inline: auto;
+	}
+	h3{
+		margin-inline: auto;
+	}
+	h4{
+		margin-inline: auto;
+	}
+
+	p {
+		margin-inline: auto;
+	}
+	ul{
+		margin-inline: auto;
+	}
+}

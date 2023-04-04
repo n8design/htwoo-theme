@@ -1,0 +1,26 @@
+{{ $uniqueKey := printf "%s" .PublishDate | printf "%s" .Title }}
+{{ $postID := md5 $uniqueKey  }}
+{{ if (isset .Params "video") }}
+<article class="mediacard">
+    <h2 class="mediacard-title">{{ .Title }}</h2>
+    <time class="mediacard-date" datetime="{{ .PublishDate }}">{{ .PublishDate.Format .Site.Params.dateFormat }}</time>
+    <div class="mediacard-desc">{{ .Content }}</div>
+    <figure class="mediacard-media video" aria-labelledby="{{ $postID }}">
+        {{- partial "generic/yt.html" (dict "context" . "id" .Params.Video "Config" .Page.Site.Config "class" "") -}}
+    </figure>
+    <p id="{{ $postID }}" class="mediacard-source">Source: <a href="{{- .Params.Source -}}">{{- .Title -}}</a></p>
+</article>
+{{ end }}
+{{ if (isset .Params "podcast") }}
+<article class="mediacard">
+    <h2 class="mediacard-title">PODCAST {{ .Title }}</h2>
+    <time class="mediacard-date" datetime="{{ .PublishDate }}">{{ .PublishDate.Format .Site.Params.dateFormat }}</time>
+    <div class="mediacard-desc">{{ .Content }}</div>
+    <figure class="mediacard-media audio" aria-labelledby="{{ $postID }}">
+        <audio controls>
+            <source src="{{ .Params.Podcast  | relURL }}" type="audio/mpeg">
+        </audio>
+    </figure>
+    <p id="{{ $postID }}" class="mediacard-source">Source: <a href="{{- .Params.Source -}}">{{- .Title -}}</a></p>
+</article>
+{{ end }}

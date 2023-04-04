@@ -1,0 +1,25 @@
+.sect-media,
+.sect-facts{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(1rem, 2vw, 3vw);
+    .sect-header{
+        grid-column: 2 / span 11;
+    }
+    margin-top: 5vw;
+    margin-bottom: 10vw;
+}
+.cards{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2vw;
+    grid-column: 2 / span 10;
+    @media screen and (max-width:1024px){
+        grid-template-columns: repeat(6, 1fr);
+        gap: 4vw;
+    }
+    @media screen and (max-width:640px){
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4vw;
+    }
+}
