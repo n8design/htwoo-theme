@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title itemprop="name">{{ .Title }} | {{ .Site.Params.seoTitle }}</title>
+    <!-- SEO Title -->
+    <meta property="og:title" content="{{ .Title }} | {{ .Site.Params.seoTitle }}" />
+    <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Params.seoTitle }}" />
+    <meta itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />
+    <meta name="application-name" content="{{ .Title }} | {{ .Site.Title }}" />
+    <meta property="og:site_name" content="{{ .Site.Params.sitename }}" />
+    <meta name="keywords" content={{ delimit .Keywords ", " }} />
+    <!-- SEO Description -->
+    <meta name="description"
+        content="{{.Description | default .Site.Params.SiteDescription}}" />
+    <meta itemprop="description"
+        content="{{.Description | default .Site.Params.SiteDescription}}" />
+    <meta property="og:description"
+        content="{{.Description | default .Site.Params.SiteDescription}}" />
+    <meta name="twitter:description"
+        content="{{.Description | default .Site.Params.SiteDescription}}" />
+    <!-- SEO links -->
+    <base href="{{ .Permalink }}">
+    <link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
+    <meta name="url" content="{{ .Permalink }}" />
+    <meta name="twitter:url" content="{{ .Permalink }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:locale" content="{{ .Language.Lang }}">
+
+    <!-- Meta Images -->
+    {{ with .Params.image }}
+    <meta itemprop="image" content="{{ . | absURL }}" />
+    <meta property="og:image" content="{{ . | absURL }}" />
+    <meta name="twitter:image" content="{{ . | absURL }}" />
+    <meta name="twitter:image:src" content="{{ . | absURL }}" />
+    {{ else }}
+    <meta itemprop="image" content="{{ .Site.Params.ogimage | absURL }}" />
+    <meta property="og:image" content="{{ .Site.Params.ogimage | absURL }}" />
+    <meta name="twitter:image" content="{{ .Site.Params.ogimage | absURL }}" />
+    <meta name="twitter:image:src" content="{{ .Site.Params.ogimage | absURL }}" />
+    {{ end }}
+    {{ $options := (dict
+    "transpiler" "dartsass"
+    "targetPath" "assets/css/main.css"
+    "outputStyle"
+    "compressed"
+    "enableSourceMap"
+    (not hugo.IsProduction)
+    "enableSourceMap" true
+    "includePaths"
+    (slice "./themes/h2o/assets/")) }}
+    {{ $style := resources.Get "sass/main.scss" | toCSS $options | postCSS | fingerprint "sha256" }}
+    <link rel="stylesheet" href="{{$style.RelPermalink}}" integrity="{{ $style.Data.Integrity }}">
+
+    {{- partial "rss.html" -}}
+    {{- if .Params.private -}}
+    <meta name="robots" content="noindex, nofollow" />
+    {{- else if .Params.robots -}}
+    <meta name="robots" content="{{- .Params.robots -}}" />
+    {{- end -}}
+    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6828898/7547832/css/fonts.css" />
+</head>
