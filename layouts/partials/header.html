@@ -1,11 +1,13 @@
 <!-- navbar -->
 <header class="header-main" role="banner">
-
     <div class="header-title">
         <a href="/" class="home-link">{{ readFile "static/img/htwoo-logo.svg" | safeHTML}}
             {{/*  <span class="site-title">{{
                 .Site.Title }}</span>  */}}
         </a>
     </div>
+    <nav class="header-nav" role="navigation">
+        {{ partial "nav/main" . }}
+    </nav>
 </header>
 <!-- // navbar -->

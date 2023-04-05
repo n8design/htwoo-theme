@@ -3,8 +3,9 @@
 
 .wrapper{
     display: grid;
-    grid-template-columns: max(250px, 15vh) repeat(7, 1fr);
-    gap: max(2rem, 3vw)
+    grid-template-columns: max(250px, 20vw) repeat(7, 1fr);
+    gap: max(2rem, 3vw);
+    min-height: 100vh;
 }
 .main-content{
     grid-column: 3 / span 5;

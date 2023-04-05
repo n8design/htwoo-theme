@@ -1,11 +1,9 @@
 {{ define "main" }}
-
---general/single
 <!-- single template -->
 <article id="content" class="t-general">
   <header>
     <h1 id="title">{{ .Title }}</h1>
-    {{- if not .Params.nodate -}}
+    {{- if (and (isset .Params "nodate") (not .Params.nodate)) -}}
     <p id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </p>
     {{- end -}}
     {{/*  <h5 id="wordcount"> {{ .WordCount }} Words </h5>  */}}

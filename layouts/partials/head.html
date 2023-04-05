@@ -47,20 +47,25 @@
     "transpiler" "dartsass"
     "targetPath" "assets/css/main.css"
     "outputStyle"
-    "compressed"
+    "expanded"
     "enableSourceMap"
     (not hugo.IsProduction)
     "enableSourceMap" true
-    "includePaths"
+    "includePaths" 
     (slice "./themes/h2o/assets/")) }}
-    {{ $style := resources.Get "sass/main.scss" | toCSS $options | postCSS | fingerprint "sha256" }}
-    <link rel="stylesheet" href="{{$style.RelPermalink}}" integrity="{{ $style.Data.Integrity }}">
-
+    {{- if not hugo.IsProduction }}
+        {{ $style := resources.Get "sass/main.scss" | toCSS $options | postCSS }}
+        <link rel="stylesheet" href="{{$style.RelPermalink}}" integrity="{{ $style.Data.Integrity }}">
+    {{ else }}
+        {{ $style := resources.Get "sass/main.scss" | toCSS $options | postCSS | fingerprint "sha256" }}
+        <link rel="stylesheet" href="{{$style.RelPermalink}}" integrity="{{ $style.Data.Integrity }}">
+    {{ end -}}
     {{- partial "rss.html" -}}
     {{- if .Params.private -}}
     <meta name="robots" content="noindex, nofollow" />
     {{- else if .Params.robots -}}
     <meta name="robots" content="{{- .Params.robots -}}" />
     {{- end -}}
-    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6828898/7547832/css/fonts.css" />
+    <link rel="stylesheet" rel=preload type="text/css" href="https://cloud.typography.com/6828898/7547832/css/fonts.css" />
+
 </head>

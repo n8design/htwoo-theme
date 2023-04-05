@@ -1,5 +1,19 @@
 @use '../../01-atoms/typography' as typo;
-@use '../../00-base/design-token.vars' as dt;
+@use '../../00-base/_design-token.vars.scss' as dt;
+
+
+%background-clip {
+
+	background: linear-gradient(var(--deg, 45deg), #024b5e 0%, #024b5e 40%, #03adbd 100%);
+	background-size: 125%;
+	background-repeat: no-repeat;
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+
+	text-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+}
 
 .t-general {
 	font-size: typo.$p;
@@ -7,9 +21,9 @@
 
 	padding: clamp(32px, 2vw, 48px);
 	padding-top: 0;
-	
+
 	margin-block: 3vw;
-	margin-top: 0;
+	margin-top: 7rem;
 	margin-inline: auto;
 	max-width: 100ch;
 	line-height: 1.618;
@@ -21,7 +35,8 @@
 		text-transform: uppercase;
 		margin-inline: auto;
 		margin-top: 0;
-		background: linear-gradient(0% base.$c-p1-10, 100% base.$c-p2-50);
+		--deg: 45deg;
+		@extend %background-clip;
 	}
 
 	h2 {
@@ -30,18 +45,27 @@
 		font-weight: 900;
 		text-transform: uppercase;
 		margin-inline: auto;
+		--deg: 215deg;
+		@extend %background-clip;
 	}
-	h3{
+
+	h3 {
 		margin-inline: auto;
+		--deg: 305deg;
+		@extend %background-clip;
 	}
-	h4{
+
+	h4 {
 		margin-inline: auto;
+		--deg: 305deg;
+		@extend %background-clip;
 	}
 
 	p {
 		margin-inline: auto;
 	}
-	ul{
+
+	ul {
 		margin-inline: auto;
 	}
 }

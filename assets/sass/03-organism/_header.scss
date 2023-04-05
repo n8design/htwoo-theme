@@ -6,23 +6,35 @@
 	right: 0;
 	left: 0;
 
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	// background-color: rgba(#fff, 0);
 	box-sizing: border-box;
-	padding: clamp(1.5vw, 2rem, 1.5vh);
+	// padding: clamp(1.5vw, 2rem, 1.5vh);
 	padding-bottom: 0;
+	padding-left: 0;
 
-    background-color: rgba(#fff, 0.5);
+    background-color: inherit;
 	backdrop-filter: blur(10px);
     z-index: 10;
-	grid-column: 1 / span 8;
+	height: 100vh;
+	max-height: 100vh;
+	width: 100%;
 }
 .header-title{
 	white-space: nowrap;
 
-	grid-column: 1 / span 5;
 	background-color: transparent;
-	@media screen and (max-width: 640px) {
-		grid-column: 1 / span 8;
+	max-height: 5rem;
+	padding: 1rem 2rem;
+	background-color: rgba(#f0f0f0, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.125) 0px 32px 64px;
+	filter: background-blur(10px);
+	border: 1px #fff solid;
+	border-bottom: 0;
+	svg{
+		fill: linear-gradient(135deg, red 0%, lime 100%);
+		shape-rendering: geometricPrecision;
+		box-shadow: rgba(0, 0, 0, 0.125) 0px 32px 64px;
 	}
 }

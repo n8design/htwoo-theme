@@ -15,7 +15,18 @@
 	padding-inline: clamp(1rem, 2vw, 2rem);
 	// border-right: 1px lime solid;
 	transition: all 0.5s ease-out;
-	// background: linear-gradient(135deg, #024b5e 0%, #027686 75%, #0294a4 100%);
+
+	background-color: rgba(#f0f0f0, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.125) 0px 32px 64px;
+	filter: background-blur(10px);
+	border: 1px #fff solid;
+	border-radius: 0.25rem;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	padding-block: 2rem;
+
+	height: 100%;
+	max-height: 100%;
 }
 
 .menu-main {
@@ -57,17 +68,13 @@
 }
 
 .menu-item {
-	&.active {
-		a {
-			color: white;
-			background-color: purple;
-		}
-	}
+	box-sizing: border-box;
 }
 
 .menu-link {
 	font-size: 1.2em;
 	font-weight: 600;
+	color: inherit;
 
 	display: block;
 
@@ -114,12 +121,17 @@
 .menu-sub {
 	list-style-type: none;
 	line-height: 1.25em;
-	padding-left: 1em;
 	margin-left: 0.5em;
-	border-left: 1px currentColor solid;	
+	padding-left: 0;
 
 	.menu-item {
 		padding-block: 0.25em;
+		padding-left: 1em;
+		border-left: 1px var(--c-text) solid;
+		&.active {
+			background-color: var(--c-p1-30);
+			background-color: #F2A413;
+		}
 	}
 
 	.menu-link {
