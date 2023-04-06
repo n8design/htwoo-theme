@@ -1,7 +1,7 @@
 <!-- navbar -->
 <header class="header-main" role="banner">
     <div class="header-title">
-        <a href="/" class="home-link">{{ readFile "static/img/htwoo-logo.svg" | safeHTML}}
+        <a href="{{ .Site.BaseURL }}" class="home-link">{{ readFile "static/img/htwoo-logo.svg" | safeHTML}}
             {{/*  <span class="site-title">{{
                 .Site.Title }}</span>  */}}
         </a>

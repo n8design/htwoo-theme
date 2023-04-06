@@ -16,7 +16,10 @@
 }
 
 .t-general {
+
+	display: grid;
 	font-size: typo.$p;
+	grid-template-columns: repeat(5, 1fr);
 	// font-size: clamp(1, 2vw, 3vw);
 
 	padding: clamp(32px, 2vw, 48px);
@@ -25,8 +28,27 @@
 	margin-block: 3vw;
 	margin-top: 7rem;
 	margin-inline: auto;
-	max-width: 100ch;
+	margin-right:  max(2rem, 3vw);
+	// max-width: 100ch;
 	line-height: 1.618;
+
+	margin-bottom: 5vw;
+	@media screen and (max-width: 1440px) {
+		grid-template-columns: repeat(2, 1fr);
+		padding: clamp(8px, 2vw, 24px);
+	}
+	@media screen and (max-width: 960px) {
+		margin-top: 1rem;
+    }
+
+
+	&>*{
+		grid-column: 2 / span 3;
+		width: 100%;
+		@media screen and (max-width: 1440px) {
+			grid-column: 1 / span 2;
+		}
+	}
 
 	h1 {
 		font-size: typo.$h1;
@@ -50,6 +72,8 @@
 	}
 
 	h3 {
+		font-size: typo.$h3;
+		text-transform: uppercase;
 		margin-inline: auto;
 		--deg: 305deg;
 		@extend %background-clip;
@@ -67,5 +91,15 @@
 
 	ul {
 		margin-inline: auto;
+		box-sizing: border-box;
 	}
+
+	img{
+		border-radius: 1rem;
+		grid-column: 1 / span 5;
+		max-width: 100%;
+		width: auto;
+		margin-inline: auto;
+	}
+
 }

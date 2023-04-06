@@ -1,21 +1,23 @@
 {{ define "main" }}
---sponsors/lists
 <!-- single template -->
 <main class="main-content">
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
+
+    <div class="t-general">
+        <h1>{{ .Title }}</h1>
+        {{ .Content }}
+    </div>
     {{/* <strong>Resources:</strong> {{ .Resources }}<br> */}}
 
     {{ $resources := .Resources }}
     <section class="sponsors">
         {{ range .Pages }}
-        
+
         <article class="sponsor">
-    
+
             {{ $dir := path.Dir .Permalink }}
             {{ $img := ($resources.Get .Params.logo).Content | safeHTML }}
             <a href="{{ .Params.link }}" class="sponsor-link" rel="noopener" target="_black">
-            {{ $img }}
+                {{ $img }}
             </a>
         </article>
         </a>

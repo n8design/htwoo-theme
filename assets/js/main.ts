@@ -17,11 +17,12 @@ const toggleMenu = (event) => {
 
     if (hamMenu) {
 
-        let isExpanded = hamMenu.ariaExpanded === 'true' ? true : false;
+        let isExpanded = hamMenu.ariaExpanded === 'true' ? false : true;
 
         console.debug('isExpanded', isExpanded);
 
-        hamMenu.ariaExpanded = (!isExpanded).toString();
+        document.body.style.overflow = isExpanded? null : 'hidden';
+        hamMenu.ariaExpanded = (isExpanded).toString();
 
     }
 
@@ -34,6 +35,7 @@ const resetNav = () => {
     let menuEntries = document.getElementsByClassName('menu-item active');
     for(let entry of menuEntries){
         entry.classList.remove('active');
+        entry.ariaCurrent = null
     }
 
 }
@@ -45,7 +47,21 @@ const changeNav = (event) => {
     const menuItem = event.target.closest('.menu-item');
     // set element as active
     menuItem.classList.add('active');
+    menuItem.ariaCurrent = "page";
+
+    let ham = document.getElementById('ham') as Element;
+
+    if(ham.getAttribute('aria-expanded') === 'true'){
+        ham.setAttribute('aria-expanded', 'false');
+        hamMenu.ariaExpanded = "false";
+        hamMenu.classList.remove('is-active');
+        console.debug(hamMenu);
+
+    }
+
+
 }
+
 // query all menu entries of navigation
 const menuEntries = document.querySelectorAll('.header-nav .menu-item');
 menuEntries.forEach((entry) => {
