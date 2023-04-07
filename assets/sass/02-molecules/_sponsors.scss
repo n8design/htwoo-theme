@@ -1,36 +1,46 @@
-.sponsors {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: max(1rem, 2vw);
-    margin-top: 5rem;
+.sponsors{
+	display: grid;
+
+	margin-top: 5rem;
+	padding: clamp(16px, 2vw, 24px);
+
+	gap: max(1rem, 2vw);
+	grid-auto-rows: 1fr;
+	grid-template-columns: repeat(3, 1fr);
+
+	@media screen and (max-width: 768px){
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
-.sponsor-link {
-    display: flex;
+.sponsor-link{
+	display: flex;
 }
 
-.sponsor {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    grid-column: auto / span 1;
-    border-radius: 1.5em;
-    padding: 0.5rem;
-    // box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 8px;
-    transition: all 0.125s ease-in-out;
+.sponsor{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 
-    &:hover {
+	padding: .5rem;
 
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 16px;
-    }
+	transition: all .125s ease-in-out;
 
-    &:active {
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 0px;
-    }
+	border-radius: 1.5em;
+	// box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+	box-shadow: rgba(0, 0, 0, .35) 0 3px 8px;
 
-    svg {
-        width: 100%;
+	grid-column: auto / span 1;
 
-    }
+	&:hover{
+		box-shadow: rgba(0, 0, 0, .35) 0 6px 16px;
+	}
+
+	&:active{
+		box-shadow: rgba(0, 0, 0, .35) 0 0 0;
+	}
+
+	svg{
+		width: 100%;
+	}
 }

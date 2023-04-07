@@ -1,4 +1,4 @@
-%baseMenu {
+%baseMenu{
 	display: flex;
 	flex-direction: column;
 
@@ -6,75 +6,125 @@
 	padding: 0;
 }
 
-.header-nav {
+.header-nav{
 	@extend %baseMenu;
 
+	overflow: hidden;
+	overflow-y: auto;
 	justify-content: flex-start;
-	grid-column: 1 / span 1;
-
-	padding-inline: clamp(1rem, 2vw, 2rem);
-	// border-right: 1px lime solid;
-	transition: all 0.5s ease-out;
-
-	background-color: rgba(#f0f0f0, 0.8);
-	box-shadow: rgba(0, 0, 0, 0.125) 0px 32px 64px;
-	filter: background-blur(10px);
-	border: 1px #fff solid;
-	border-radius: 0.25rem;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	padding-block: 2rem;
 
 	height: 100%;
 	max-height: 100%;
+	// border-right: 1px lime solid;
+
+	transition: all .5s ease-out;
+
+	border: 1px #fff solid;
+	border-radius: .25rem;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	background-color: rgba(#f0f0f0, .8);
+	box-shadow: rgba(0, 0, 0, .125) 0 32px 64px;
+
+	filter: background-blur(10px);
+	grid-column: 1 / span 1;
+	padding-block: 2rem;
+	padding-inline: clamp(1rem, 2vw, 2rem);
+
+	@media screen and (max-width: 1024px){
+		background-color: rgba(#f0f0f0, 1);
+		flex-direction: row;
+		justify-content: flex-end;
+
+		height: 3rem;
+
+		align-items: center;
+		grid-column: 2 / span 4;
+		padding-block: .5rem .75rem;
+	}
 }
 
-.menu-main {
+.menu-main{
 	@extend %baseMenu;
+
+	position: relative;
 
 	justify-content: flex-end;
 
+	margin-bottom: 10rem;
+
 	list-style: none;
 
-	gap: 0.5rem;
+	gap: .5rem;
 
-	@media screen and (max-width: 640px) {
+	@media screen and (max-width: 1024px){
 		display: none;
 	}
 
-	&[aria-expanded="true"] {
-		position: fixed;
-		top: 100px;
+	.menu-item{
+		position: sticky;
+		top: 0;
+
+		padding-top: .25em;
+
+		background: rgba(240, 240, 240, 1);
+	}
+
+	&[aria-expanded="true"]{
+	
+		position: absolute;
+		top: 4rem;
 		right: 0;
 		left: 0;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		display: block;
+		overflow: hidden;
+		overflow-y: scroll;
 
-		height: calc(100vh - 100px);
-		background-color: rgba(#fff, 0.95);
-		backdrop-filter: blur(5px);
+		box-sizing: border-box;
+		// position: fixed;
+		// position: absolute;
+		// // top: 300px;
+		// right: 0;
+		// left: 0;
+		// // margin-top: 300px;
+		// display: flex;
+		// flex-direction: column;
+		// justify-content: center;
+		// // height: calc(100vh - 100px);
+		// background-color: rgba(#fff, 0.95);
+		// backdrop-filter: blur(5px);
+		height: calc(100vh - 4rem);
+		padding: 2rem;
 
-		.menu-item {
-			text-align: center;
-			font-size: clamp(2rem, 5vw, 5rem);
+		border-top: 1px solid currentColor;
+		background: rgba(240, 240, 240, 1);
+		.menu-item{
+			// font-size: clamp(2rem, 5vw, 5rem);
+			position: unset;
+
+			text-align: left;
 		}
 
-		.menu-link {
-			font-weight: 900;
+		& > .menu-item{
+			position: sticky;
+			top: 0;
+		}
+
+		.menu-link{
+			margin-top: 0.25rem;
+			padding-bottom: 0.25rem;
 		}
 	}
 }
 
-.menu-item {
+.menu-item{
 	box-sizing: border-box;
 }
 
-.menu-link {
+.menu-link{
 	font-size: 1.2em;
 	font-weight: 600;
-	color: inherit;
 
 	display: block;
 
@@ -82,61 +132,84 @@
 	text-decoration: none;
 	text-transform: uppercase;
 
+	color: inherit;
 	outline-offset: .25em;
 
-	&:active {}
+	&:active{
+	}
 
-	&:hover {
+	&:hover{
 		transition: color .15s ease-out, background-color .25s ease-out;
 
 		color: black;
 	}
 
-	&:visited {}
+	&:visited{
+	}
 
-	&:focus {}
+	&:focus{
+	}
 }
 
-.menu-toggle {
+.menu-toggle{
 	@extend .menu-link;
 
 	display: flex;
 
+	transform: center center;
+
 	border: none;
 	background: none;
 
-	&>* {
+	align-items: stretch;
+	& > *{
 		pointer-events: none;
 	}
-
-	&.is-active {
+	span{
+		display: block;
+	}
+	&.is-active{
 		transform: rotateX(180deg);
 	}
 
-	@media screen and (min-width: 640px) {
+	@media screen and (min-width: 1024px){
 		display: none;
 	}
 }
 
-.menu-sub {
-	list-style-type: none;
+.menu-sub{
 	line-height: 1.25em;
-	margin-left: 0.5em;
+
+	margin-bottom: 0;
+	margin-left: .5em;
+	padding-bottom: 1em;
 	padding-left: 0;
 
-	.menu-item {
-		padding-block: 0.25em;
+	list-style-type: none;
+
+	background: rgba(240, 240, 240, 1);
+
+	.menu-item{
 		padding-left: 1em;
+
 		border-left: 1px var(--c-text) solid;
-		&.active {
+
+		padding-block: .25em;
+		&.active{
 			background-color: var(--c-p1-30);
-			background-color: #F2A413;
+			background-color: #f2a413;
 		}
+
 	}
 
-	.menu-link {
-		text-transform: none;
-		font-weight: 500;
+	.menu-link{
 		font-size: 100%;
+		font-weight: 500;
+
+		text-transform: none;
+	}
+
+	@media screen and (max-width: 1024px){
+		margin-left: 0;
 	}
 }

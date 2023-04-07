@@ -1,12 +1,25 @@
-@use 'welcome';
-@use 'projects';
+@use "welcome";
+@use "projects";
 
 .wrapper{
-    display: grid;
-    grid-template-columns: max(250px, 20vw) repeat(7, 1fr);
-    gap: max(2rem, 3vw);
-    min-height: 100vh;
+	display: grid;
+
+	max-width: 100vw;
+	min-height: 100vh;
+
+	gap: max(2rem, 3vw);
+	grid-template-columns: minmax(250px, 15vw) auto;
+	@media screen and (max-width: 1024px){
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: 3rem auto;
+	}
 }
 .main-content{
-    grid-column: 3 / span 5;
+    box-sizing: border-box;
+	grid-column: 2 / span 2;
+	@media screen and (max-width: 1024px){
+		padding: 1rem;
+
+		grid-column: 1 / span 5;
+	}
 }

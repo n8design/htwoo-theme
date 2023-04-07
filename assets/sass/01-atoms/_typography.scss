@@ -1,13 +1,18 @@
-$h1: clamp(32px, 4.676056338px + 4vw, 100px);
-$h2: clamp(24px, 14.8450704225px + 1.8309859155vw, 40px);
-$p: clamp(16px, 13.1830985915px + .5633802817vw, 20px);
+// $h1: clamp(32px, 4.676056338px + 4vw, 100px);
+$h1: clamp(32px, 16px + 4vw, 96px);
+// $h2: clamp(24px, 14.8450704225px + 2.472187886279357vw, 40px);
+$h2: clamp(24px, 16px + 2.472187886279357vw, 48px);
+// $h3: clamp(20px, 14.8450704225px + 1.527928236266599vw, 32px);
+$h3: clamp(20px, 16px + 1.527928236266599vw, 32px);
+// $p: clamp(16px, 13.1830985915px + .5633802817vw, 20px);
+$p: clamp(16px, 16px + 0.908940057267459vw, 24px);
 
 
 .highlight{
     font-size: clamp(0.8rem, 13.1830985915px + .5633802817vw, 1rem);
     width: auto;
     margin: auto;
-    margin-block: 3rem 4rem;
+    margin-block: 2em 3em;
     pre{
         box-sizing: border-box;
         padding: 1rem 1.5rem;
@@ -26,14 +31,27 @@ p>code{
     background-color: #272822;
     color: #f8f8f8;
     white-space: nowrap;
+
     &::before{
         display: inline-block;
         width: 0.5em;
         content: " ";
+        @media screen and (max-width: 1024px) {
+            display: none;
+        }
     }
     &::after{
         display: inline-block;
         width: 0.5em;
         content: " ";
+        @media screen and (max-width: 1024px) {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        white-space: normal;
+        word-wrap: break-word;
+        border-radius: 0;
+        
     }
 }
