@@ -55,3 +55,12 @@ p>code{
         
     }
 }
+
+blockquote{
+    border-block: 1px black solid;
+    margin-block: 3em;
+    margin-inline: 0;
+    padding-inline: 2em;
+    line-height: 1.618 / 2;
+    font-style: italic;
+}

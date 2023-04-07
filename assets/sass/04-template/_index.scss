@@ -17,6 +17,10 @@
 .main-content{
     box-sizing: border-box;
 	grid-column: 2 / span 2;
+	> img{
+		width: calc(100% + max(2rem, 3vw));
+		margin-inline: min(-2rem, -3vw);
+	}
 	@media screen and (max-width: 1024px){
 		padding: 1rem;
 
