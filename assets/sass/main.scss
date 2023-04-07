@@ -6,27 +6,29 @@
 @use './04-template/index' as template;
 
 body {
-    font-family: "Gotham A", "Gotham B", sans-serif;
-    font-weight: 400;
-    font-kerning: normal;
-    text-rendering: optimizeLegibility;
-    font-feature-settings: "liga" 0, "dlig" 0, "calt" 0, "smcp" 0, "swsh" 0, "salt" 0, "frac" 0, "onum" 0, "tnum" 0, "ordn" 0, "hlig" 0, "lnum", "ss01" 0, "ss02" 0, "ss03" 0, "ss04" 0, "ss05" 0, "ss06" 0, "ss07" 0, "ss08" 0, "ss09" 0, "ss10" 0, "ss11" 0, "ss12" 0, "ss13" 0, "ss14" 0, "ss15" 0, "ss16" 0, "ss17" 0, "ss18" 0, "ss19" 0, "ss20" 0;
-    background-color: dt.$c-bg-main;
-    color: var(--c-text);
-    margin: 0;
-    font-smooth: always;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #fafafa;
-    background: radial-gradient(#fafafa 0, #fafafa 20%, #e8e8e8 100%);
-    background-position: 100vh fixed;
-    background-size: 200vh;
-    margin: 0;
+  font-family: "Gotham A", "Gotham B", sans-serif;
+  font-weight: 400;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 0, "dlig" 0, "calt" 0, "smcp" 0, "swsh" 0, "salt" 0, "frac" 0, "onum" 0, "tnum" 0, "ordn" 0, "hlig" 0, "lnum", "ss01" 0, "ss02" 0, "ss03" 0, "ss04" 0, "ss05" 0, "ss06" 0, "ss07" 0, "ss08" 0, "ss09" 0, "ss10" 0, "ss11" 0, "ss12" 0, "ss13" 0, "ss14" 0, "ss15" 0, "ss16" 0, "ss17" 0, "ss18" 0, "ss19" 0, "ss20" 0;
+  background-color: dt.$c-bg-main;
+  color: var(--c-text);
+  margin: 0;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  background: radial-gradient(#fafafa 0, #fafafa 20%, #e8e8e8 100%);
+  background-position: 100vh fixed;
+  background-size: 200vh;
+  margin: 0;
 }
 
+
+
 a {
-    color: var(--c-link-v);
-    text-decoration: none;
+  color: var(--c-link-v);
+  text-decoration: none;
 }
 
 // svg, img, iframe, video, figure{
@@ -34,15 +36,19 @@ a {
 // }
 
 .transition-fade {
-    transition: 0.4s;
-    opacity: 1;
-    transform-origin: right;
-    transform: translateX(0);
-  }
-  
-  html.is-animating .transition-fade {
-    opacity: 0;
-    transition: 0.4s;
-    transform: translateX(100%);
+  transition: 0.4s;
+  opacity: 1;
+  transform-origin: right;
+  transform: translateX(0);
+}
 
-  }
+html.is-animating .transition-fade {
+  opacity: 0;
+  transition: 0.4s;
+  transform: translateX(100%);
+
+}
+
+img{
+  pointer-events: none !important;
+}

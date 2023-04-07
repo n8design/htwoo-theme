@@ -1,3 +1,6 @@
 {{ define "main"}}
+{{ if isset .Params "coverimage" }}
+    {{- partial "cover-image.html" . -}}
+{{ end }}
 {{ .Content }}
 {{ end}}
