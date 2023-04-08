@@ -1,0 +1,16 @@
+<section class="ql-sponsors">
+    <header class="sponsor-header">
+        <h3>Supported by:</h3>
+    </header>    
+    {{- $subPageList := (where .Site.Pages "Section" "supporters") -}}
+    {{ range $subPageList }}
+        {{ if isset .Params "logo" }}
+            <article class="sponsor">
+                {{ $localImage := path.Join .Site.Params.localSVGPath .Params.logo }}
+                <a href="{{ .Params.link }}" class="sponsor-link" rel="noopener" target="_black">
+                {{ readFile $localImage | safeHTML }}
+                </a>
+            </article>
+        {{ end }}
+    {{ end }}
+</section>
