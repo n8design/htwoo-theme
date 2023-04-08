@@ -25,10 +25,18 @@ body {
 }
 
 
+p,
+ul {
+  a {
+    color: var(--c-link-v);
+    text-decoration: none;
 
-a {
-  color: var(--c-link-v);
-  text-decoration: none;
+    &:hover {
+      background-color: dt.$c-p2-60;
+      color: white;
+      inset: -1em;
+    }
+  }
 }
 
 // svg, img, iframe, video, figure{
@@ -49,6 +57,6 @@ html.is-animating .transition-fade {
 
 }
 
-img{
+img {
   pointer-events: none !important;
 }

@@ -7,9 +7,29 @@
 	gap: max(1rem, 2vw);
 	grid-auto-rows: 1fr;
 	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: auto auto;
 
 	@media screen and (max-width: 768px){
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.ql-sponsors{
+	@extend .sponsors;
+
+	grid-template-columns: repeat(6, 1fr);
+	margin-top: 2vw;
+	.sponsor{
+		svg{
+			max-height: 4rem;
+		}
+	}
+}
+
+.sponsor-header{
+	grid-column: 1 / -1;
+	h3{
+		margin: 0;
 	}
 }
 
@@ -23,8 +43,10 @@
 	justify-content: center;
 
 	padding: .5rem;
+	padding: 1.5rem;
 
 	transition: all .125s ease-in-out;
+	box-sizing: border-box;
 
 	border-radius: 1.5em;
 	// box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;

@@ -12,9 +12,7 @@
             {{ range .Pages }}
 
             <article class="sponsor">
-
-                {{ $dir := path.Dir .Permalink }}
-                {{ $img := ($resources.Get .Params.logo).Content | safeHTML }}
+                {{ $img := readFile (path.Join "static" .Params.logo) | safeHTML }}
                 <a href="{{ .Params.link }}" class="sponsor-link" rel="noopener" target="_black">
                     {{ $img }}
                 </a>

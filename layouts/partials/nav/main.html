@@ -9,36 +9,47 @@
     </svg>
     <span>&#10507; Menu &#10507;</span></button>
 <menu class="menu-main" id="ham">
-    {{- range .Site.Menus.main -}}
+{{- range .Site.Menus.main -}}
     {{- $normUrl := printf "%s/" .URL -}}
     {{- $isActive := eq $normUrl $current.RelPermalink -}}
     <li class="menu-item{{- if $isActive -}} active{{- end -}}" {{- if $isActive -}}aria-current="page" {{- end -}}>
-
-
+        {{ if not (eq .URL "") -}}
         <a class="menu-link" href="{{- .URL -}}" {{- if eq .Params.blank true -}} target="_blank" rel="noopener" {{- end
-            -}}>{{
-            .Name -}}</a>
+            -}}>{{ .Name -}}</a>
+        {{- else -}}
+            {{ .Name -}}
+        {{- end -}}
         {{- $page := $context.GetPage .PageRef -}}
         {{- $pageSection := $page.Section -}}
 
-        {{- if eq .Params.dynamic true -}}
-        {{- $subPages := $pages -}}
-        {{- $subPageList := (where $subPages "Section" $pageSection) -}}
-        {{- if not (eq $subPageList 0) -}}
+        {{- if .HasChildren -}}
         <menu class="menu-sub">
+            {{- range .Children -}}
+                {{/*  {{- $activePage := eq $current.Permalink .Permalink -}}  */}}
+                {{- $activePage := eq $current.RelPermalink .URL -}}
+                <li class="menu-item{{- if $activePage }} active" aria-current="page{{ end -}}">
+                    <a href="{{- .URL -}}" class="menu-link">{{- .Name -}}</a>
+                </li>
+            {{- end -}}
+            </menu>        
+        {{- end -}}
 
-            {{- range $subPageList -}}
-            {{- range .Pages -}}
-            {{- $activePage := eq $current.Permalink .Permalink -}}
-    <li class="menu-item{{- if $activePage }} active" aria-current="page{{ end -}}">
-        <a href="{{- .Permalink -}}" class="menu-link">{{- .Title -}}</a>
+        {{- if eq .Params.dynamic true -}}
+            {{- $subPages := $pages -}}
+            {{- $subPageList := (where $subPages "Section" $pageSection) -}}
+            {{- if not (eq $subPageList 0) -}}
+                <menu class="menu-sub">
+                {{- range $subPageList -}}
+                    {{- range .Pages -}}
+                        {{- $activePage := eq $current.Permalink .Permalink -}}
+                        <li class="menu-item{{- if $activePage }} active" aria-current="page{{ end -}}">
+                            <a href="{{- .Permalink -}}" class="menu-link">{{- .Title -}}</a>
+                        </li>
+                    {{- end -}}
+                {{- end -}}
+                </menu>
+            {{- end -}}
+        {{- end -}}
     </li>
-    {{- end -}}
-    {{- end -}}
-
-</menu>
-{{- end -}}
-{{- end -}}
-</li>
 {{- end -}}
 </menu>
