@@ -17,7 +17,7 @@
         <a class="menu-link" href="{{- .URL -}}" {{- if eq .Params.blank true -}} target="_blank" rel="noopener" {{- end
             -}}>{{ .Name -}}</a>
         {{- else -}}
-            {{ .Name -}}
+            <span class="menu-link">{{ .Name -}}</span>
         {{- end -}}
         {{- $page := $context.GetPage .PageRef -}}
         {{- $pageSection := $page.Section -}}

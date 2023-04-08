@@ -19,6 +19,9 @@
 
 	grid-template-columns: repeat(6, 1fr);
 	margin-top: 2vw;
+	@media screen and (max-width: 1440px){
+		grid-template-columns: repeat(3, 1fr);
+	}
 	.sponsor{
 		svg{
 			max-height: 4rem;
