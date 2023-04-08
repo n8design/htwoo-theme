@@ -10,16 +10,18 @@
 	// backdrop-filter: blur(10px);
 	// border-radius: 1rem;
 
-	margin-left: min(-2rem, -3vw);
-	max-width: 100%;
+	margin-inline: min(-2rem, -3vw);
+	max-width: calc(100% + max(4rem, 6vw));
+	max-height: 60vh;
+	overflow: hidden;
 ;
 }
 .o-cover-img{
 	position: sticky;
 
-	height: 100%;
-	width: auto;
-	max-width: calc(100% + max(2rem, 3vw));
+	height: auto;
+	width: 100%;
+	max-width: calc(100% + max(4rem, 6vw));
 }
 .o-cover-title{
 	font-weight: 900;
