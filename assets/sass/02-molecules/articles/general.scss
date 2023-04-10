@@ -42,6 +42,7 @@
     }
 
 
+
 	&>*{
 		grid-column: 2 / span 3;
 		width: 100%;
@@ -94,6 +95,16 @@
 		box-sizing: border-box;
 	}
 
+	figure{
+		margin-inline: 0;
+	}
+	figcaption{
+		p{
+			margin: 0;
+			text-align: right;
+		}
+	}
+	figure, 
 	img{
 		border-radius: 1rem;
 		grid-column: 1 / span 5;

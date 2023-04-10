@@ -165,6 +165,10 @@
 	&:focus {}
 }
 
+span.menu-link{
+		pointer-events: none;
+}
+
 .menu-toggle {
 	@extend .menu-link;
 
