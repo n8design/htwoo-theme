@@ -1,0 +1,23 @@
+.stargazers{
+    display: flex;
+    gap: 1vw;
+    flex-wrap: wrap;
+    padding: clamp(1rem, 2vw, 1.5rem);
+}
+.stargazer{
+    width: clamp(3rem, 1.5vw, 5rem);
+    height: clamp(3rem, 1.5vw, 5rem);
+    display: inline-block;
+    border-radius: 100%;
+    border: 1px transparent solid;
+    overflow: hidden;
+    a{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    img{
+        width: 100%;
+        height: auto;
+    }
+}

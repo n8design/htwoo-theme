@@ -1,6 +1,19 @@
 import Swup from './swup/Swup.modern.js';
 import SwupA11yPlugin from '@swup/a11y-plugin';
+// import { GitHub } from '../github/github.js';
 
+// const gh = new GitHub();
+// gh.testRepo();
+
+// const dosomething = async () => {
+//     let startgazers = await gh.starGazer();
+//     let mainContent = document.querySelector('.main-content');
+
+//     mainContent.appendChild(startgazers);
+// }
+// gh.contributors();
+
+dosomething();
 const swup = new Swup({
     plugins: [new SwupA11yPlugin()]
 });
@@ -21,7 +34,7 @@ const toggleMenu = (event) => {
 
         console.debug('isExpanded', isExpanded);
 
-        document.body.style.overflow = isExpanded? null : 'hidden';
+        document.body.style.overflow = isExpanded ? null : 'hidden';
         hamMenu.ariaExpanded = (isExpanded).toString();
 
     }
@@ -33,7 +46,7 @@ hamMenu.addEventListener('click', toggleMenu);
 
 const resetNav = () => {
     let menuEntries = document.getElementsByClassName('menu-item active');
-    for(let entry of menuEntries){
+    for (let entry of menuEntries) {
         entry.classList.remove('active');
         entry.ariaCurrent = null
     }
@@ -51,7 +64,7 @@ const changeNav = (event) => {
 
     let ham = document.getElementById('ham') as Element;
 
-    if(ham.getAttribute('aria-expanded') === 'true'){
+    if (ham.getAttribute('aria-expanded') === 'true') {
         ham.setAttribute('aria-expanded', 'false');
         hamMenu.ariaExpanded = "false";
         hamMenu.classList.remove('is-active');
@@ -65,5 +78,5 @@ const changeNav = (event) => {
 // query all menu entries of navigation
 const menuEntries = document.querySelectorAll('.header-nav .menu-item');
 menuEntries.forEach((entry) => {
-    entry.addEventListener('click', changeNav, );
+    entry.addEventListener('click', changeNav,);
 })

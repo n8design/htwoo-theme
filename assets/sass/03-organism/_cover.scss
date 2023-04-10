@@ -10,10 +10,14 @@
 	// backdrop-filter: blur(10px);
 	// border-radius: 1rem;
 
-	margin-inline: min(-2rem, -3vw);
+	margin-inline-start: min(-2rem, -3vw);
 	max-width: calc(100% + max(4rem, 6vw));
 	max-height: 60vh;
 	overflow: hidden;
+	@media screen and (max-width: 1024px) {
+		max-width: 100%;
+		margin: 0;
+	}
 ;
 }
 .o-cover-img{
@@ -47,6 +51,9 @@
 	font-size: typo.$h2;
 
 	line-height: 1;
+	@media screen {
+		max-height: 80%;
+	}
 }
 
 .o-cover-sub{
