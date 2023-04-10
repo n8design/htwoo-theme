@@ -46,6 +46,7 @@
 	&>*{
 		grid-column: 2 / span 3;
 		width: 100%;
+		box-sizing: border-box;
 		@media screen and (max-width: 1440px) {
 			grid-column: 1 / span 2;
 		}
