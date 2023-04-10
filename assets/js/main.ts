@@ -13,10 +13,10 @@ import SwupA11yPlugin from '@swup/a11y-plugin';
 // }
 // gh.contributors();
 
-dosomething();
-const swup = new Swup({
-    plugins: [new SwupA11yPlugin()]
-});
+// dosomething();
+// const swup = new Swup({
+//     plugins: [new SwupA11yPlugin()]
+// });
 
 const toggleMenu = (event) => {
 
