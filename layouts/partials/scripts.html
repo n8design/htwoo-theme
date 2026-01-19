@@ -5,3 +5,4 @@
 {{ $mainJs := resources.Get "js/main.ts" | js.Build $options }}
 <script src="{{ $mainJs.RelPermalink }}" module="true"></script>
 {{ partial "ga.html" }}
+{{ partial "ahrefs.html" }}
