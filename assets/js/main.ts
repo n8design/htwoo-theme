@@ -19,26 +19,26 @@ new Swup({
 });
 
 const toggleMenu = (event) => {
-
-
     event.stopImmediatePropagation();
-    console.debug(event.target.classList.toggle('is-active'), event.target.classList);
-    console.debug(event.currentTarget.getAttribute('aria-controls'));
+
+    // Toggle is-active on the button (currentTarget), not the SVG (target)
+    event.currentTarget.classList.toggle('is-active');
 
     let menuId = event.currentTarget.getAttribute('aria-controls');
     let hamMenu = document.getElementById(menuId) as Element;
 
     if (hamMenu) {
+        // Read current state using getAttribute for cross-browser reliability
+        let currentState = hamMenu.getAttribute('aria-expanded');
+        let isExpanded = currentState !== 'true';
 
-        let isExpanded = hamMenu.ariaExpanded === 'true' ? false : true;
+        // Use setAttribute for cross-browser compatibility
+        hamMenu.setAttribute('aria-expanded', isExpanded.toString());
+        event.currentTarget.setAttribute('aria-expanded', isExpanded.toString());
 
-        console.debug('isExpanded', isExpanded);
-
-        document.body.style.overflow = isExpanded ? null : 'hidden';
-        hamMenu.ariaExpanded = (isExpanded).toString();
-
+        // Block scroll when menu is expanded
+        document.body.style.overflow = isExpanded ? 'hidden' : null;
     }
-
 }
 
 let hamMenu = document.getElementById('ham-menu') as Element;
