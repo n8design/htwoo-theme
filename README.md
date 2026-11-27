@@ -36,3 +36,13 @@ Node 24. Pattern Dump is pinned at an exact version in `package.json`.
 
 While working on the theme inside the website, run `npm run watch:helpers` here beside the website's `pd dev`
 when you change a helper.
+
+## How a change reaches htwoo.io
+
+1. A pull request here, merged with a merge commit (no squash, no rebase): htwoo pins this repository by SHA.
+2. In [n8design/htwoo](https://github.com/n8design/htwoo), bump the pin to the new commit on `main`, in its own
+   commit, as a pull request merged with a merge commit: `chore(deps): Bump htwoo-theme to <short sha>`. Merging
+   it deploys the site. The steps are in htwoo's [CONTRIBUTING.md](https://github.com/n8design/htwoo/blob/main/CONTRIBUTING.md#website).
+
+To see a change in the website before that: in an htwoo checkout, `website/theme` is this repository; check out
+your branch there, run `npm ci` here, and the website's `pd dev` (`cd website && npm run dev`) shows it.

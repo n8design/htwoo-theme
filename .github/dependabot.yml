@@ -1,0 +1,11 @@
+# Version updates: Pattern Dump, pinned at an exact version in package.json.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    allow:
+      - dependency-name: pattern-dump
+    commit-message:
+      prefix: "chore(deps)"
